@@ -25,7 +25,7 @@ ob-shell.el when executed.")
 take one argument (the language specified in the src block, as a string). Stops
 at the first function to return non-nil.")
 
-(defvar +org-capture-todo-file "todo.org"
+(defvar +org-capture-todo-file "inbox.org"
   "Default target for todo entries.
 
 Is relative to `org-directory', unless it is absolute. Is used in Doom's default
@@ -382,15 +382,15 @@ I like:
         +org-capture-journal-file
         (expand-file-name +org-capture-journal-file org-directory)
         org-capture-templates
-        '(("t" "Personal todo" entry
-           (file+headline +org-capture-todo-file "Inbox")
-           "* [ ] %?\n%i\n%a" :prepend t)
+        '(("t" "gather inbox" entry
+           (file "inbox.org")
+           "* TODO %?" :prepend t)
           ("n" "Personal notes" entry
            (file+headline +org-capture-notes-file "Inbox")
-           "* %u %?\n%i\n%a" :prepend t)
+           "* %u %?" :prepend t)
           ("j" "Journal" entry
            (file+olp+datetree +org-capture-journal-file)
-           "* %U %?\n%i\n%a" :prepend t)
+           "* %U %?" :prepend t)
 
           ;; Will use {project-root}/{todo,notes,changelog}.org, unless a
           ;; {todo,notes,changelog}.org file is found in a parent directory.
